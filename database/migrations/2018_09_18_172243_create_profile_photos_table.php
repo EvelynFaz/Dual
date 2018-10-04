@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTrainingFrameworkPlanTable extends Migration
+class CreateProfilePhotosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateTrainingFrameworkPlanTable extends Migration
      */
     public function up()
     {
-        Schema::create('training_framework_plan', function (Blueprint $table) {
+        Schema::create('profile_photos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('priority');
+            $table->string('type_archive');
+            $table->string('name_archive');
+            $table->string('attached');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateTrainingFrameworkPlanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('training_framework_plan');
+        Schema::dropIfExists('profile_photos');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTracingTable extends Migration
+class CreateAcademicPeriodsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateTracingTable extends Migration
      */
     public function up()
     {
-        Schema::create('tracing', function (Blueprint $table) {
+        Schema::create('academic_periods', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('student_id')->unsigned();
-            $table->string('career_coordinator');
-            $table->string('start_date');
-            $table->string('finish_date');
-            $table->string('hours_training');
+            $table->string('description');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class CreateTracingTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tracing');
+        Schema::dropIfExists('academic_period');
     }
 }

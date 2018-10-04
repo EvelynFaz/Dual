@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateActivityReportLearningTable extends Migration
+class CreateActivityReportLearningsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateActivityReportLearningTable extends Migration
      */
     public function up()
     {
-        Schema::create('activity_report_learning', function (Blueprint $table) {
+        Schema::create('activity_report_learnings', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('user_id');
             $table->string('description');
             $table->string('type');
             $table->string('date');

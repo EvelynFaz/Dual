@@ -4,30 +4,18 @@ namespace App\Http\Controllers;
 
 class UserController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    /*  public function __construct()
-      {
-          //
-      }
-
-      //*/
 
     function createUser(Request $request)
     {
         try {
             $data = $request->json()->all();
-            $dataUser = $data['User'];
+            $dataUser = $data['user'];
             $user = User::create([
-                'name' => $data['name'],
-                'user_name' => $data['user_name'],
-                'email' => $data['email'],
-                'api_token' => $data['api_token'],
-                'password' => $data['password'],
-
+                'name' => $dataUser['name'],
+                'user_name' => $dataUser['user_name'],
+                'email' => $dataUser['email'],
+                'api_token' => str_random(60),
+                'password' => Hash::make($data['password']),
             ]);
             return response()->json($user, 201);
         } catch (ModelNotFoundException $e) {
@@ -50,8 +38,11 @@ class UserController extends Controller
         $dataUser = $data['user'];
         DB::beginTransaction();
         $response = User::findOrFail($data['id'])->update([
-            'type' => $data['Type'],
-
+            'name' => $dataUser['name'],
+            'user_name' => $dataUser['user_name'],
+            'email' => $dataUser['email'],
+            'password' => Hash::make($dataUser['password']),
+            'api_token' => str_random(60),
 
         ]);
         DB::commit();
@@ -59,11 +50,20 @@ class UserController extends Controller
 
     }
 
+
     function deleteUser(Request $request)
     {
-        $user = User::findOrFail($request->id)->delete();
-        return response()->json($user, 201);
+        try {
+            $user = User::findOrFail($request->id)->delete();
+            return response()->json($user, 201);
+        } catch (ModelNotFoundException $e) {
+            return response()->json('ModelNotFound', 405);
+        } catch (NotFoundHttpException  $e) {
+            return response()->json('NotFoundHttp', 405);
+        } catch (Exception $e) {
+            return response()->json('Exception', 500);
+        } catch (Error $e) {
+            return response()->json('Error', 500);
+        }
     }
-
-
 }

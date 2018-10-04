@@ -25,7 +25,7 @@ class RotationPlan extends Model implements AuthenticatableContract, Authorizabl
     ];
 
 
-    public function rotationplan()
+    public function rotationPlan()
     {
         return $this->belongsToMany('App\TrainingFrameworkPlan')->withTimestamps();
     }

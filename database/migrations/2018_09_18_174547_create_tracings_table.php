@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProfilePhotoTable extends Migration
+class CreateTracingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateProfilePhotoTable extends Migration
      */
     public function up()
     {
-        Schema::create('profile_photo', function (Blueprint $table) {
+        Schema::create('tracings', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type_archive');
-            $table->string('name_archive');
-            $table->string('attached');
+            $table->string('career_coordinator');
+            $table->string('start_date');
+            $table->string('finish_date');
+            $table->string('hours_training');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateProfilePhotoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profile_photo');
+        Schema::dropIfExists('tracing');
     }
 }

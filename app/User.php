@@ -33,4 +33,23 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $hidden = [
         'password',
     ];
+
+    public function roles()
+    {
+        return $this->belongsToMany('App\Role')->withTimestamps();
+    }
+
+    public function Tutor()
+    {
+        return $this->hasOne('App\Tutor');
+    }
+
+    public function Student()
+    {
+        return $this->hasOne('App\Student');
+    }
+    public function FormativeEntity()
+    {
+        return $this->hasOne('App\FormativeEntity');
+    }
 }

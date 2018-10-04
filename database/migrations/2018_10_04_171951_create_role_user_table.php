@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLearningReportTable extends Migration
+class CreateRoleUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateLearningReportTable extends Migration
      */
     public function up()
     {
-        Schema::create('learning_report', function (Blueprint $table) {
+        Schema::create('role_user', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('week');
-            $table->string('qualification');
-            $table->string('date_delivery');
-            $table->string('reflection');
-            $table->string('observations');
-            $table->string('priority');
+            $table->integer('user_id')->unsigned();
+            $table->integer('role_id')->unsigned();
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ class CreateLearningReportTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('learning_report');
+        Schema::dropIfExists('role_user');
     }
 }

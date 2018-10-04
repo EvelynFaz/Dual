@@ -16,14 +16,12 @@
 //});
 
 
-$router->get('/prueba', ['uses' => 'UserController@prueba']);
-/* Rutas para las tutores*/
-$router->group(['middleware' => ['auth']], function () use ($router) {
-    $router->get('/turor/Student', ['uses' => 'TutorController@getAllStudent']);
-    $router->delete('/turor/Student', ['uses' => 'TutorController@deleteStudent']);
-    $router->put('/turor/Student', ['uses' => 'TutorController@updateStudent']);
 
-/*Rutas */
+/* Rutas para los usuarios*/
+$router->group(['middleware' => ['auth']], function () use ($router) {
+    $router->get('/users', ['uses' => 'UserController@CreateUser']);
+    $router->delete('/users', ['uses' => 'userController@deleteUser']);
+    $router->put('/users', ['uses' => 'UserController@updateUser']);
 
 
 

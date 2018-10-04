@@ -4,29 +4,28 @@ namespace App\Http\Controllers;
 
 class TutorController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    /*  public function __construct()
-      {
-          //
-      }
 
-      //*/
 
-    function createTutor(Request $request)
+    function createStudentTutor(Request $request)
     {
         try {
+
             $data = $request ->json()->all();
             $dataStudent = $data['student'];
             $dataTutor = $data['tutor'];
-            $tutor = Tutor::where('user_id', $request->user_id)->first();
-            $response = $tutor->student()->create([
+            DB::beginTransaction();
+            $tutor = Tutor::create([
                 'first_name' => $dataStudent[first_name],
                 'last_name' => $dataStudent[last_name],
             ]);
+
+            $tutor->roles()->attach(1);
+            $tutor->Tutor()->create([
+                'type' =>$dataTutor [type],
+            ]);
+
+
+            DB::commit();
             return response()->json($tutor, 201);
         } catch (ModelNotFoundException $e) {
             return response()->json('ModelNotFound', 405);
@@ -43,12 +42,17 @@ class TutorController extends Controller
 
     function updateTutor(Request $request)
     {
-
-        $data = $request->json()->all();
+        $data = $request ->json()->all();
+        $dataStudent = $data['student'];
         $dataTutor = $data['tutor'];
+        $tutor = Tutor::where('user_id', $request->user_id)->first();
+        $response = $tutor->student()->create([
+            'type' => $dataTutor[type],
+        ]);
         DB::beginTransaction();
-        $response = Tutor::findOrFail($data['id'])->update([
-            'type' => $data['Type'],
+        $response = Student::findOrFail($data['id'])->update([
+            'first_name' => $dataStudent[first_name],
+            'last_name' => $dataStudent[last_name],
 
 
         ]);
@@ -56,6 +60,29 @@ class TutorController extends Controller
         return response()->json($response, 201);
 
     }
+
+    function updateStudent(Request $request)
+    {
+
+        $data = $request->json()->all();
+        $dataStudent = $data['student'];
+        $dataTutor = $data['tutor'];
+        $response = Student::findOrFail($dataStudent['id'])->update([
+            'first_name' => $dataStudent[first_name],
+            'last_name' => $dataStudent[last_name],
+        ]);
+        DB::beginTransaction();
+        $response = Tutor::findOrFail($data['id'])->update([
+            'type' => $dataTutor[type],
+
+
+
+        ]);
+        DB::commit();
+        return response()->json($response, 201);
+
+    }
+
 
     function deleteTutor(Request $request)
     {

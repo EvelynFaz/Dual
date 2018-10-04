@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRotationPlanTable extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateRotationPlanTable extends Migration
      */
     public function up()
     {
-        Schema::create('rotation_plan', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('theoretical_knowledge');
-            $table->string('procedural_knowledge_attitudinal');
-            $table->string('knowledge');
-            $table->string('priority');
+            $table->string('description');
+            $table->integer('role');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateRotationPlanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rotation_plm');
+        Schema::dropIfExists('roles');
     }
 }

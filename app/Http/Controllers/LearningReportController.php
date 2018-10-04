@@ -20,7 +20,6 @@ class LearningReportController extends Controller
     {
         try {
             $data = $request->json()->all();
-            $dataLearningReport = $data['LearningReport'];
             $learningReport = LearningReport::create([
                 'week' => $data ['week'],
                 'qualification' => $data['qualification'],

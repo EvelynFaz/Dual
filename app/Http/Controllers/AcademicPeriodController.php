@@ -20,7 +20,6 @@ class academicPeriodController extends Controller
     {
         try {
             $data = $request->json()->all();
-            $dataAcademicPeriod = $data['academicPeriod'];
             $academicPeriod = AcademicPeriod::create([
                 'description' => $data ['description'],
 
@@ -43,9 +42,8 @@ class academicPeriodController extends Controller
     {
 
             $data = $request->json()->all();
-            $dataAcademicPeriod = $data['AcademicPeriod'];
             DB::beginTransaction();
-            $response = AcademicPeriod::findOrFail($data['id'])->update([
+            $response = academicPeriod::findOrFail($data['id'])->update([
                 'description' => $data ['description'],
 
             ]);

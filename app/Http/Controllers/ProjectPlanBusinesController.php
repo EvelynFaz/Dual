@@ -22,17 +22,17 @@ class ProjectPlanBusinesController extends Controller
             $data = $request->json()->all();
             $dataProjectPlanBusines = $data['ProjectPlanBusines'];
             $projectPlanBusines = ProjectPlanBusines::create([
-                'type' => $data ['type'],
-                'analysis' => $data['analysis'],
-                'objective' => $data ['objective'],
-                'description' => $data ['description'],
-                'indicator' => $data ['indicator'],
-                'measurement' => $data ['measurement'],
-                'goal' => $data ['goal'],
-                'data_source' => $data ['data_source'],
-                'budget' => $data ['budget'],
-                'expected_benefits' => $data ['expected_benefits'],
-                'priority' => $data ['priority'],
+                'type' => $dataProjectPlanBusines ['type'],
+                'analysis' => $dataProjectPlanBusines['analysis'],
+                'objective' => $dataProjectPlanBusines ['objective'],
+                'description' => $dataProjectPlanBusines ['description'],
+                'indicator' => $dataProjectPlanBusines ['indicator'],
+                'measurement' => $dataProjectPlanBusines ['measurement'],
+                'goal' => $dataProjectPlanBusines ['goal'],
+                'data_source' => $dataProjectPlanBusines ['data_source'],
+                'budget' => $dataProjectPlanBusines ['budget'],
+                'expected_benefits' => $dataProjectPlanBusines ['expected_benefits'],
+                'priority' => $dataProjectPlanBusines ['priority'],
 
 
 
@@ -58,17 +58,17 @@ class ProjectPlanBusinesController extends Controller
             $dataProjectPlanBusines = $data['Objectt'];
             DB::beginTransaction();
             $response = ProjectPlanBusines::findOrFail($data['id'])->update([
-                'type' => $data ['type'],
-                'analysis' => $data['analysis'],
-                'objective' => $data ['objective'],
-                'description' => $data ['description'],
-                'indicator' => $data ['indicator'],
-                'measurement' => $data ['measurement'],
-                'goal' => $data ['goal'],
-                'data_source' => $data ['data_source'],
-                'budget' => $data ['budget'],
-                'expected_benefits' => $data ['expected_benefits'],
-                'priority' => $data ['priority'],
+                'type' => $dataProjectPlanBusines ['type'],
+                'analysis' => $dataProjectPlanBusines['analysis'],
+                'objective' => $dataProjectPlanBusines ['objective'],
+                'description' => $dataProjectPlanBusines ['description'],
+                'indicator' => $dataProjectPlanBusines ['indicator'],
+                'measurement' => $dataProjectPlanBusines ['measurement'],
+                'goal' => $dataProjectPlanBusines ['goal'],
+                'data_source' => $dataProjectPlanBusines ['data_source'],
+                'budget' => $dataProjectPlanBusines ['budget'],
+                'expected_benefits' => $dataProjectPlanBusines ['expected_benefits'],
+                'priority' => $dataProjectPlanBusines ['priority'],
 
             ]);
             DB::commit();
@@ -82,8 +82,8 @@ class ProjectPlanBusinesController extends Controller
 
     function deleteProjectPlanBusines(Request $request)
     {
-      $user = ProjectPlanBusines::findOrFail($request->id)->delete();
-        return response()->json($user,   201);
+      $projectPlanBusines = ProjectPlanBusines::findOrFail($request->id)->delete();
+        return response()->json($projectPlanBusines,   201);
     }
 
 

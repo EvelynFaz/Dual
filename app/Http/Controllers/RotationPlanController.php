@@ -22,10 +22,10 @@ class RotationPlanController extends Controller
             $data = $request->json()->all();
             $dataRotationPlan = $data['RotationPlan'];
             $rotationPlan = RotationPlan::create([
-                'theoretical_knowledge' => $data ['theoretical_knowledge'],
-                'procedural_knowledge_attitudinal' => $data['procedural_knowledge_attitudinal'],
-                'knowledge' => $data ['knowledge'],
-                'priority' => $data ['priority'],
+                'theoretical_knowledge' => $dataRotationPlan ['theoretical_knowledge'],
+                'procedural_knowledge_attitudinal' => $dataRotationPlan['procedural_knowledge_attitudinal'],
+                'knowledge' => $dataRotationPlan ['knowledge'],
+                'priority' => $dataRotationPlan ['priority'],
 
             ]);
             return response()->json($rotationPlan, 201);
@@ -49,10 +49,10 @@ class RotationPlanController extends Controller
             $dataRotationPlan = $data['RotationPlan'];
             DB::beginTransaction();
             $response = RotationPlan::findOrFail($data['id'])->update([
-                'theoretical_knowledge' => $data ['theoretical_knowledge'],
-                'procedural_knowledge_attitudinal' => $data['procedural_knowledge_attitudinal'],
-                'knowledge' => $data ['knowledge'],
-                'priority' => $data ['priority'],
+                'theoretical_knowledge' => $dataRotationPlan ['theoretical_knowledge'],
+                'procedural_knowledge_attitudinal' => $dataRotationPlan['procedural_knowledge_attitudinal'],
+                'knowledge' => $dataRotationPlan ['knowledge'],
+                'priority' => $dataRotationPlan ['priority'],
 
 
             ]);
@@ -67,8 +67,8 @@ class RotationPlanController extends Controller
 
     function deleteRotationPlan(Request $request)
     {
-      $user = RotationPlan::findOrFail($request->id)->delete();
-        return response()->json($user,   201);
+      $rotationPlan = RotationPlan::findOrFail($request->id)->delete();
+        return response()->json($rotationPlan,   201);
     }
 
 

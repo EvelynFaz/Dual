@@ -20,7 +20,6 @@ class ProfilePhotoController extends Controller
     {
         try {
             $data = $request->json()->all();
-            $dataProfilePhoto = $data['ProfilePhoto'];
             $profilePhoto = ProfilePhoto::create([
                 'type_archive' => $data ['type_archive'],
                 'name_archive' => $data['name_archive'],
@@ -45,7 +44,6 @@ class ProfilePhotoController extends Controller
     {
 
             $data = $request->json()->all();
-            $dataProfilePhoto = $data['ProfilePhoto'];
             DB::beginTransaction();
             $response = ProfilePhoto::findOrFail($data['id'])->update([
                 'type_archive' => $data ['type_archive'],

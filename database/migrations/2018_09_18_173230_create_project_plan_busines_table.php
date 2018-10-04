@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProjectPlanBusinessTable extends Migration
+class CreateProjectPlanBusinesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateProjectPlanBusinessTable extends Migration
      */
     public function up()
     {
-        Schema::create('project_plan_business', function (Blueprint $table) {
+        Schema::create('project_plan_busines', function (Blueprint $table) {
             $table->increments('id');
             $table->string('type');
             $table->string('analysis');
@@ -37,6 +37,6 @@ class CreateProjectPlanBusinessTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('project_plan_business');
+        Schema::dropIfExists('project_plan_busines');
     }
 }

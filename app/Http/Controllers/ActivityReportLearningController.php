@@ -20,7 +20,6 @@ class ActivityReportLearningController extends Controller
     {
         try {
             $data = $request->json()->all();
-            $dataActivityReportLearning = $data['ActivityReportLearning'];
             $activityReportLearning = ActivityReportLearning::create([
                 'description' => $data ['description'],
                 'type' => $data['type'],

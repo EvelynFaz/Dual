@@ -20,7 +20,6 @@ class PersonController extends Controller
     {
         try {
             $data = $request->json()->all();
-            $dataPerson = $data['person'];
             $person = Person::create([
                 'name' => $data['name'],
                 'identification' => $data['identification'],
@@ -45,7 +44,6 @@ class PersonController extends Controller
     {
 
         $data = $request->json()->all();
-        $dataPerson = $data['person'];
         DB::beginTransaction();
 
         $response = Person::findOrFail($data['id'])->update([

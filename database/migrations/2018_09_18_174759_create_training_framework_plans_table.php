@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTutorTable extends Migration
+class CreateTrainingFrameworkPlansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateTutorTable extends Migration
      */
     public function up()
     {
-        Schema::create('tutor', function (Blueprint $table) {
+        Schema::create('training_framework_plans', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type');
+            $table->string('priority');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateTutorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tutor');
+        Schema::dropIfExists('training_framework_plan');
     }
 }

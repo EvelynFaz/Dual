@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-class ObjectController extends Controller
+class ObjectiveController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -16,12 +16,11 @@ class ObjectController extends Controller
 
     //*/
 
-    function createObject(Request $request)
+    function createObjective(Request $request)
     {
         try {
             $data = $request->json()->all();
-            $dataObject = $data['Object'];
-            $object = Object::create([
+            $objective = Objective::create([
                 'description' => $data ['description'],
                 'level_achievement_expected' => $data['level_achievement_expected'],
                 'level_achievement_reached' => $data ['level_achievement_reached'],
@@ -33,7 +32,7 @@ class ObjectController extends Controller
                 'priority' => $data ['priority'],
 
             ]);
-            return response()->json($object, 201);
+            return response()->json($objective, 201);
         } catch (ModelNotFoundException $e) {
             return response()->json($e, 405);
         } catch (NotFoundHttpException  $e) {
@@ -47,13 +46,12 @@ class ObjectController extends Controller
         }
     }
 
-    function updateObjectt(Request $request)
+    function updateObjective(Request $request)
     {
 
             $data = $request->json()->all();
-            $dataObject = $data['Object'];
             DB::beginTransaction();
-            $response = Object::findOrFail($data['id'])->update([
+            $response = Objective::findOrFail($data['id'])->update([
                 'description' => $data ['description'],
                 'level_achievement_expected' => $data['level_achievement_expected'],
                 'level_achievement_reached' => $data ['level_achievement_reached'],
@@ -74,9 +72,9 @@ class ObjectController extends Controller
 
 
 
-    function deleteObject(Request $request)
+    function deleteObjective(Request $request)
     {
-      $user = Object::findOrFail($request->id)->delete();
+      $user = Objective::findOrFail($request->id)->delete();
         return response()->json($user,   201);
     }
 
