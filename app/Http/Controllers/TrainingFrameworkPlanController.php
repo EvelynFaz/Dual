@@ -16,6 +16,29 @@ class TrainingFrameworkPlanController extends Controller
 
     //*/
 
+    function createAcademicFormation(Request $request)
+    {
+
+        try {
+            $data = $request->json()->all();
+            $professional = Professional::findOrFail($request->professional_id);
+            $response = $professional->academicFormations()->create([
+                'priority' => $data['priority'],
+
+            ]);
+            return response()->json($response, 201);
+        } catch (ModelNotFoundException $e) {
+            return response()->json('ModelNotFound', 405);
+        } catch (NotFoundHttpException  $e) {
+            return response()->json('NotFoundHttp', 405);
+        } catch (Exception $e) {
+            return response()->json('Exception', 500);
+        } catch (Error $e) {
+            return response()->json('Error', 500);
+        }
+
+    }
+
     function createTrainingFrameworkPlan(Request $request)
     {
         try {
@@ -23,7 +46,7 @@ class TrainingFrameworkPlanController extends Controller
             $dataTrainingFrameworkPlan = $data['Object'];
             $trainingFrameworkPlan = TrainingFrameworkPlan::create([
 
-                'priority' => $data ['priority'],
+                'priority' => dataTrainingFrameworkPlan ['priority'],
 
             ]);
             return response()->json($trainingFrameworkPlan, 201);

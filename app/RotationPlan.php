@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
-class RotationPlan extends Model implements AuthenticatableContract, AuthorizableContract
+class RotationPlan extends Model
 {
     use Authenticatable, Authorizable;
 

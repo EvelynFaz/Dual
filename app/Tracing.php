@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
-class Tracing extends Model implements AuthenticatableContract, AuthorizableContract
+class Tracing extends Model
 {
     use Authenticatable, Authorizable;
 
@@ -25,7 +25,7 @@ class Tracing extends Model implements AuthenticatableContract, AuthorizableCont
         'hours_training',
     ];
 
-    public function tracing()
+    public function tracings()
     {
         return $this->belongsToMany('App\Tracing')->withTimestamps();
     }
@@ -37,7 +37,7 @@ class Tracing extends Model implements AuthenticatableContract, AuthorizableCont
 
     public function FormativeEntity()
     {
-        return $this->hasMany('App\FormativeEntity');
+        return $this->belongsTo('App\FormativeEntity');
     }
 
     public function TeachingPeriod()

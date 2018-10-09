@@ -19,31 +19,19 @@ class FormativeEntityController extends Controller
     function createFormativeEntity(Request $request)
     {
         try {
-            $data = $request ->json()->all();
-            $dataActivityReportLearning = $data['ActivityReportLearning'];
-            $dataFormativeEntity = $data['FormativeEntity'];
-            $formativeEntity = FormativeEntity::where('user_id', $request->user_id)->first();
-            $response = $formativeEntity->ActivityReportLearning()->create([
 
-                'description' => $dataActivityReportLearning ['description'],
-                'type' => $dataActivityReportLearning['type'],
-                'date' => $dataActivityReportLearning ['date'],
-                'hour_income' => $dataActivityReportLearning ['hour_income'],
-                'departure_time' => $dataActivityReportLearning ['departure_time'],
-                'hours_total' => $dataActivityReportLearning ['hours_total'],
-                'priority' => $dataActivityReportLearning ['priority'],
 
-                /* $data = $request->json()->all();
+                $data = $request->json()->all();
                  $dataFormativeEntity = $data['FormativeEntity'];
                  $formativeEntity = FormativeEntity::create([
-                     'name' => $data ['name'],
-                     'nature' => $data['nature'],
-                     'legal_representative' => $data ['legal_representative'],
-                     'ruc' => $data ['ruc'],
-                     'activity_economic' => $data ['activity_economic'],
-                     'email' => $data ['email'],
-                     'address' => $data ['address'],
-                     'phone' => $data ['phone'],*/
+                     'name' => $dataFormativeEntity ['name'],
+                     'nature' => $dataFormativeEntity['nature'],
+                     'legal_representative' => $dataFormativeEntity ['legal_representative'],
+                     'ruc' => $dataFormativeEntity ['ruc'],
+                     'activity_economic' => $dataFormativeEntity ['activity_economic'],
+                     'email' => $dataFormativeEntity ['email'],
+                     'address' => $dataFormativeEntity ['address'],
+                     'phone' => $dataFormativeEntity ['phone'],
 
 
             ]);
@@ -68,14 +56,14 @@ class FormativeEntityController extends Controller
             $dataFormativeEntity = $data['FormativeEntity'];
             DB::beginTransaction();
             $response = FormativeEntity::findOrFail($data['id'])->update([
-                'name' => $data ['name'],
-                'nature' => $data['nature'],
-                'legal_representative' => $data ['legal_representative'],
-                'ruc' => $data ['ruc'],
-                'activity_economic' => $data ['activity_economic'],
-                'email' => $data ['email'],
-                'address' => $data ['address'],
-                'phone' => $data ['phone'],
+                'name' => $dataFormativeEntity ['name'],
+                'nature' => $dataFormativeEntity['nature'],
+                'legal_representative' => $dataFormativeEntity ['legal_representative'],
+                'ruc' => $dataFormativeEntity ['ruc'],
+                'activity_economic' => $dataFormativeEntity ['activity_economic'],
+                'email' => $dataFormativeEntity ['email'],
+                'address' => $dataFormativeEntity ['address'],
+                'phone' => $dataFormativeEntity ['phone'],
 
             ]);
             DB::commit();

@@ -19,11 +19,7 @@
 
 /* Rutas para los usuarios*/
 $router->group(['middleware' => ['auth']], function () use ($router) {
-    $router->get('/users', ['uses' => 'UserController@CreateUser']);
+    $router->get('/users', ['uses' => 'UserController@createUser']);
     $router->delete('/users', ['uses' => 'userController@deleteUser']);
     $router->put('/users', ['uses' => 'UserController@updateUser']);
-
-
-
-
 });

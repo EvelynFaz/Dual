@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
-class Role extends Model implements AuthenticatableContract, AuthorizableContract
+class Role extends Model
 {
     use Authenticatable, Authorizable;
 
@@ -24,9 +24,9 @@ class Role extends Model implements AuthenticatableContract, AuthorizableContrac
     ];
 
 
-    public function role()
+    public function users()
     {
-        return $this->belongsToMany('App\Role')->withTimestamps();
+        return $this->belongsToMany('App\User')->withTimestamps();
     }
 
 }

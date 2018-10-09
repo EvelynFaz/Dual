@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
-class AcademicPeriod extends Model implements AuthenticatableContract, AuthorizableContract
+class AcademicPeriod extends Model
 {
     use Authenticatable, Authorizable;
 
@@ -23,7 +23,7 @@ class AcademicPeriod extends Model implements AuthenticatableContract, Authoriza
     ];
 
 
-    public function role()
+    public function academicPeriods()
     {
         return $this->belongsToMany('App\AcademicPeriod')->withTimestamps();
     }

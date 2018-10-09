@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
-class TrainingFrameworkPlan extends Model implements AuthenticatableContract, AuthorizableContract
+class TrainingFrameworkPlan extends Model
 {
     use Authenticatable, Authorizable;
 
@@ -28,5 +28,6 @@ class TrainingFrameworkPlan extends Model implements AuthenticatableContract, Au
     {
         return $this->belongsToMany('App\Tracing')->withTimestamps();
     }
+
 
 }

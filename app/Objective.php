@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
-class Objective extends Model implements AuthenticatableContract, AuthorizableContract
+class Objective extends Model
 {
     use Authenticatable, Authorizable;
 
@@ -32,6 +32,10 @@ class Objective extends Model implements AuthenticatableContract, AuthorizableCo
     public function tracing()
     {
         return $this->belongsToMany('App\LearningReport')->withTimestamps();
+    }
+    public function trainingFrameworkPlans()
+    {
+        return $this->belongsToMany('App\TrainingFrameworkPlans')->withTimestamps();
     }
 
 }

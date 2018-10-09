@@ -8,15 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
-class Tutor extends Model implements AuthenticatableContract, AuthorizableContract
+class Tutor extends Model
 {
-    use Authenticatable, Authorizable;
+
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+
     protected $fillable = [
 
         'type',
@@ -25,8 +26,12 @@ class Tutor extends Model implements AuthenticatableContract, AuthorizableContra
 
 
     public function tracing()
+{
+    return $this->belongsToMany('App\Tracing')->withTimestamps();
+}
+    public function students()
     {
-        return $this->belongsToMany('App\Tracing')->withTimestamps();
+        return $this->hasOne('App\Student')->withTimestamps();
     }
 
 }
