@@ -22,11 +22,11 @@ class TeachingPeriodController extends Controller
             $data = $request->json()->all();
             $dataTeachingPeriod = $data['TeachingPeriod'];
             $teachingPeriod = TeachingPeriod::create([
-                'description' => $data ['description'],
-                'start_date' => $data['start_date'],
-                'finish_date' => $data ['finish_date'],
-                'enrolled' => $data ['enrolled'],
-                'code' => $data ['code'],
+                'description' => $dataTeachingPeriod ['description'],
+                'start_date' => $dataTeachingPeriod['start_date'],
+                'finish_date' => $dataTeachingPeriod ['finish_date'],
+                'enrolled' => $dataTeachingPeriod ['enrolled'],
+                'code' => $dataTeachingPeriod['code'],
 
             ]);
             return response()->json($teachingPeriod, 201);
@@ -50,11 +50,11 @@ class TeachingPeriodController extends Controller
             $dataTeachingPeriod = $data['TeachingPeriod'];
             DB::beginTransaction();
             $response = TeachingPeriod::findOrFail($data['id'])->update([
-                'description' => $data ['description'],
-                'start_date' => $data['start_date'],
-                'finish_date' => $data ['finish_date'],
-                'enrolled' => $data ['enrolled'],
-                'code' => $data ['code'],
+                'description' => $dataTeachingPeriod ['description'],
+                'start_date' => $dataTeachingPeriod['start_date'],
+                'finish_date' => $dataTeachingPeriod ['finish_date'],
+                'enrolled' => $dataTeachingPeriod ['enrolled'],
+                'code' => $dataTeachingPeriod ['code'],
 
 
             ]);
@@ -69,8 +69,8 @@ class TeachingPeriodController extends Controller
 
     function deleteTeachingPeriod(Request $request)
     {
-      $user = TeachingPeriod::findOrFail($request->id)->delete();
-        return response()->json($user,   201);
+      $teachingPeriod = TeachingPeriod::findOrFail($request->id)->delete();
+        return response()->json($teachingPeriod,   201);
     }
 
 

@@ -19,7 +19,12 @@
 
 /* Rutas para los usuarios*/
 $router->group(['middleware' => ['auth']], function () use ($router) {
-    $router->get('/users', ['uses' => 'UserController@createUser']);
+ $router->get('/users', ['uses' => 'UserController@createUser']);
     $router->delete('/users', ['uses' => 'userController@deleteUser']);
     $router->put('/users', ['uses' => 'UserController@updateUser']);
+
 });
+/*Rutas publicas*/
+ $router->get('/tutor', ['uses' => 'TutorController@createTutor']);
+    $router->delete('/tutor', ['uses' => 'TutorController@deleteTutor']);
+    $router->put('/tutor', ['uses' => 'TutorController@updateTutor']);

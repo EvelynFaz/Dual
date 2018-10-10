@@ -22,8 +22,8 @@ class StudentController extends Controller
             $data = $request->json()->all();
             $dataStudent = $data['Student'];
             $student = Student::create([
-                'first_name' => $data ['first_name'],
-                'last_name' => $data['last_name'],
+                'first_name' => $dataStudent ['first_name'],
+                'last_name' => $dataStudent['last_name'],
 
 
             ]);
@@ -48,8 +48,8 @@ class StudentController extends Controller
             $dataStudent = $data['Student'];
             DB::beginTransaction();
             $response = Student::findOrFail($data['id'])->update([
-                'first_name' => $data ['first_name'],
-                'last_name' => $data['last_name'],
+                'first_name' => $dataStudent ['first_name'],
+                'last_name' => $dataStudent['last_name'],
 
 
             ]);
@@ -64,8 +64,8 @@ class StudentController extends Controller
 
     function deleteStudent(Request $request)
     {
-      $user = Student::findOrFail($request->id)->delete();
-        return response()->json($user,   201);
+      $student = Student::findOrFail($request->id)->delete();
+        return response()->json($student,   201);
     }
 
 

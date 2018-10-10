@@ -60,8 +60,8 @@ class PersonController extends Controller
 
     function deletePerson(Request $request)
     {
-        $user = Person::findOrFail($request->id)->delete();
-        return response()->json($user, 201);
+        $person = Person::findOrFail($request->id)->delete();
+        return response()->json($person, 201);
     }
 
 

@@ -77,8 +77,8 @@ class FormativeEntityController extends Controller
 
     function deleteFormativeEntity(Request $request)
     {
-      $user = FormativeEntity::findOrFail($request->id)->delete();
-        return response()->json($user,   201);
+      $formativeEntity = FormativeEntity::findOrFail($request->id)->delete();
+        return response()->json($formativeEntity,   201);
     }
 
 

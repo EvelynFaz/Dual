@@ -74,8 +74,8 @@ class ObjectiveController extends Controller
 
     function deleteObjective(Request $request)
     {
-      $user = Objective::findOrFail($request->id)->delete();
-        return response()->json($user,   201);
+      $objective = Objective::findOrFail($request->id)->delete();
+        return response()->json($objective,   201);
     }
 
 

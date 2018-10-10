@@ -56,10 +56,10 @@ class academicPeriodController extends Controller
 
 
 
-    function deleteActivityReportLearning(Request $request)
+    function deleteAcademicPeriod(Request $request)
     {
-      $user = AcademicPeriod::findOrFail($request->id)->delete();
-        return response()->json($user,   201);
+      $academicPeriod = AcademicPeriod::findOrFail($request->id)->delete();
+        return response()->json($academicPeriod,   201);
     }
 
 

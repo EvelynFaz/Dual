@@ -6,7 +6,7 @@ class TutorController extends Controller
 {
 
 
-    function createStudentTutor(Request $request)
+   /* function createStudentTutor(Request $request)
     {
         try {
 
@@ -38,22 +38,20 @@ class TutorController extends Controller
         } catch (Error $e) {
             return response()->json('Error', 500);
         }
-    }
+    }*/
 
-    function crateTutor(Request $request)
+    function createTutor(Request $request)
     {
         try {
             $data = $request->json()->all();
             $dataTutor = $data['tutor'];
             DB::beginTransaction();
             $tutor = Tutor::create([
-                'type' => strtoupper($dataTutor[ 'type']),
-
-
+                'type' => $dataTutor['type'],
             ]);
 
             DB::commit();
-            return $this->login($request);
+            return response()->json($tutor, 201);
         } catch (ModelNotFoundException $e) {
             return response()->json('ModelNotFound', 405);
         } catch (NotFoundHttpException  $e) {
@@ -72,9 +70,9 @@ class TutorController extends Controller
     {
         try {
             $dataTutor = $request->json()->all();
-            $tutor = ProfessionalReference::findOrFail($dataTutor['id'])->update([
-                'first_name' => $dataTutor[first_name],
-                'last_name' => $dataTutor[last_name],
+            $tutor = ProfessionalReference::findOrFail($request['id'])->update([
+                'type' => $dataTutor['type'],
+
             ]);
             return response()->json($tutor, 201);
         } catch (ModelNotFoundException $e) {

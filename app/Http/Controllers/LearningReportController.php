@@ -68,8 +68,8 @@ class LearningReportController extends Controller
 
     function deleteLearningReport(Request $request)
     {
-      $user = LearningReport::findOrFail($request->id)->delete();
-        return response()->json($user,   201);
+      $learningReport = LearningReport::findOrFail($request->id)->delete();
+        return response()->json($learningReport,   201);
     }
 
 

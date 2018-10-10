@@ -62,8 +62,8 @@ class ProfilePhotoController extends Controller
 
     function deleteProfilePhoto(Request $request)
     {
-      $user = ProfilePhoto::findOrFail($request->id)->delete();
-        return response()->json($user,   201);
+      $profilePhoto = ProfilePhoto::findOrFail($request->id)->delete();
+        return response()->json($profilePhoto,   201);
     }
 
 

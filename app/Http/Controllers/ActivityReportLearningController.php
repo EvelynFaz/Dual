@@ -71,8 +71,8 @@ class ActivityReportLearningController extends Controller
 
     function deleteActivityReportLearning(Request $request)
     {
-      $user = ActivityReportLearning::findOrFail($request->id)->delete();
-        return response()->json($user,   201);
+      $activityReportLearning = ActivityReportLearning::findOrFail($request->id)->delete();
+        return response()->json($activityReportLearning,   201);
     }
 
 

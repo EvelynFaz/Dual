@@ -22,10 +22,10 @@ class TracingController extends Controller
             $data = $request->json()->all();
             $dataTracing = $data['Tracing'];
             $tracing = Tracing::create([
-                'career_coordinator' => $data ['career_coordinator'],
-                'start_date' => $data['start_date'],
-                'finish_date' => $data ['finish_date'],
-                'hours_training' => $data ['hours_training'],
+                'career_coordinator' => $dataTracing ['career_coordinator'],
+                'start_date' => $dataTracing['start_date'],
+                'finish_date' => $dataTracing ['finish_date'],
+                'hours_training' => $dataTracing ['hours_training'],
 
 
             ]);
@@ -50,10 +50,10 @@ class TracingController extends Controller
             $dataTracing = $data['Tracing'];
             DB::beginTransaction();
             $response = Tracing::findOrFail($data['id'])->update([
-                'career_coordinator' => $data ['career_coordinator'],
-                'start_date' => $data['start_date'],
-                'finish_date' => $data ['finish_date'],
-                'hours_training' => $data ['hours_training'],
+                'career_coordinator' => $dataTracing ['career_coordinator'],
+                'start_date' => $dataTracing['start_date'],
+                'finish_date' => $dataTracing ['finish_date'],
+                'hours_training' => $dataTracing ['hours_training'],
 
             ]);
             DB::commit();
@@ -67,8 +67,8 @@ class TracingController extends Controller
 
     function deleteTracing(Request $request)
     {
-      $user = Tracing::findOrFail($request->id)->delete();
-        return response()->json($user,   201);
+      $tracing = Tracing::findOrFail($request->id)->delete();
+        return response()->json($tracing,   201);
     }
 
 
